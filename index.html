@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activation commerciale et performance retail — krotest</title>
+<meta name="description" content="Formation continue 18h — Activation commerciale et performance retail. Manager du Développement Commercial, Bloc BC04.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C2B39;
+    --ink-soft:#3C4E5E;
+    --paper:#F5F3EE;
+    --band:#EBE6D9;
+    --line:#D8D2C2;
+    --signal:#D8452B;
+    --signal-dark:#A8331F;
+    --gold:#C4870F;
+    --sage:#3F5F42;
+    --white:#FFFFFF;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', Arial, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0 0 0.5em;
+    line-height:1.15;
+  }
+  a{color:var(--signal-dark);}
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  /* Skip link */
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--white);color:var(--ink);padding:10px 16px;z-index:100;border-radius:0 0 6px 0;}
+  .skip-link:focus{left:0;}
+
+  /* Header / hero */
+  header.hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:56px 0 64px;
+    border-bottom:6px solid var(--signal);
+  }
+  .brandmark{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+  }
+  .brandmark svg{flex-shrink:0;}
+  .brandmark span{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    font-size:20px;
+    letter-spacing:0.02em;
+    color:var(--paper);
+  }
+  .hero-eyebrow{
+    font-size:15px;
+    color:#C9BFA8;
+    margin:0 0 10px;
+  }
+  h1.hero-title{
+    font-size:clamp(30px, 4.4vw, 46px);
+    max-width:14ch;
+    color:var(--white);
+  }
+  .hero-accroche{
+    font-size:19px;
+    color:#DCD6C8;
+    max-width:56ch;
+    margin:18px 0 32px;
+  }
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;}
+  .badge{
+    border:1px solid #5A6A78;
+    color:#E4DFD2;
+    font-size:14px;
+    padding:6px 14px;
+    border-radius:999px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Sans', Arial, sans-serif;
+    font-weight:600;
+    font-size:15px;
+    padding:13px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    border:2px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--signal);color:var(--white);}
+  .btn-primary:hover{background:var(--signal-dark);}
+  .btn-ghost{background:transparent;color:var(--paper);border-color:#5A6A78;}
+  .btn-ghost:hover{border-color:var(--paper);}
+
+  /* Repères clés */
+  section.reperes{padding:40px 0;}
+  .reperes-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .repere{background:var(--white);padding:22px 20px;flex:1 1 180px;}
+  .repere .num{font-family:'Fraunces', Georgia, serif;font-size:28px;font-weight:600;color:var(--signal-dark);}
+  .repere .lbl{font-size:14px;color:var(--ink-soft);margin-top:4px;}
+
+  /* Section band alternation */
+  section{padding:52px 0;}
+  section.band{background:var(--band);}
+
+  .section-head{margin-bottom:28px;max-width:64ch;}
+  .section-head h2{font-size:28px;}
+  .section-head p{color:var(--ink-soft);font-size:16px;}
+
+  /* Fil rouge */
+  .filrouge-card{
+    background:var(--white);
+    border-left:4px solid var(--sage);
+    border-radius:0;
+    padding:26px 28px;
+    max-width:72ch;
+  }
+  .filrouge-card p{margin:0 0 14px;}
+  .filrouge-card p:last-child{margin-bottom:0;}
+
+  /* RNCP list */
+  .rncp-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;max-width:74ch;}
+  .rncp-list li{
+    background:var(--white);
+    padding:14px 16px;
+    border-radius:8px;
+    border:1px solid var(--line);
+    font-size:15px;
+  }
+
+  /* Accordion */
+  .accordion{border-top:1px solid var(--line);}
+  details.seance{
+    border-bottom:1px solid var(--line);
+  }
+  details.seance summary{
+    list-style:none;
+    cursor:pointer;
+    padding:20px 4px;
+    display:flex;
+    align-items:flex-start;
+    flex-wrap:nowrap;
+    gap:18px;
+  }
+  details.seance summary::-webkit-details-marker{display:none;}
+  .seance-num{
+    font-family:'Fraunces', Georgia, serif;
+    font-size:22px;
+    font-weight:600;
+    color:var(--signal-dark);
+    flex:0 0 auto;
+    width:30px;
+    line-height:1.3;
+  }
+  .seance-head-text{flex:1 1 auto;min-width:0;}
+  .seance-head-text .titre{display:block;font-weight:600;font-size:17px;color:var(--ink);}
+  .seance-head-text .meta{display:block;font-size:14px;color:var(--ink-soft);margin-top:4px;}
+  .chevron{
+    width:22px;height:22px;flex:0 0 auto;
+    margin-top:2px;
+    transition:transform 0.2s ease;
+    color:var(--ink-soft);
+  }
+  details[open] .chevron{transform:rotate(180deg);}
+  .seance-body{padding:0 4px 28px 54px;max-width:70ch;}
+  .seance-body h4{
+    font-family:'IBM Plex Sans', Arial, sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink);
+    margin:18px 0 6px;
+  }
+  .seance-body h4:first-child{margin-top:0;}
+  .seance-body p{margin:0 0 10px;font-size:15px;}
+  .seance-body ul{margin:0 0 10px;padding-left:20px;font-size:15px;}
+  .seance-body li{margin-bottom:4px;}
+  .deroule-table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14px;}
+  .deroule-table th{
+    text-align:left;color:var(--ink-soft);font-weight:600;
+    padding:6px 10px 6px 0;border-bottom:1px solid var(--line);
+  }
+  .deroule-table td{
+    padding:8px 10px 8px 0;border-bottom:1px solid var(--line);vertical-align:top;
+  }
+  .deroule-table td.duree{white-space:nowrap;font-weight:600;color:var(--ink);}
+  .tag-modalite{
+    display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;
+  }
+  .tag-theorie{background:#E7EEF4;color:#2B4A66;}
+  .tag-pratique{background:#EAF0E4;color:var(--sage);}
+
+  /* Évaluation */
+  .eval-grid{display:flex;flex-wrap:wrap;gap:18px;}
+  .eval-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;flex:1 1 300px;}
+  .eval-card h3{font-size:18px;margin-bottom:8px;}
+  .eval-card p{font-size:15px;color:var(--ink-soft);margin:0;}
+
+  /* Lieu */
+  .lieu-grid{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;}
+  .lieu-info{flex:1 1 220px;}
+  .lieu-info address{font-style:normal;font-size:16px;line-height:1.7;}
+  .lieu-info .addr-title{font-weight:600;font-size:17px;margin-bottom:6px;}
+  .map-frame{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);flex:1 1 340px;}
+  .map-frame iframe{display:block;width:100%;height:280px;border:0;}
+
+  /* Téléchargements */
+  .dl-list{display:flex;flex-wrap:wrap;gap:14px;}
+  .dl-card{
+    display:flex;align-items:center;gap:14px;
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 20px;text-decoration:none;color:var(--ink);
+    min-width:260px;flex:1;
+  }
+  .dl-card:hover{border-color:var(--signal);}
+  .dl-icon{
+    width:38px;height:38px;flex-shrink:0;border-radius:8px;
+    background:var(--band);display:flex;align-items:center;justify-content:center;
+    color:var(--signal-dark);
+  }
+  .dl-card .dl-title{font-weight:600;font-size:15px;}
+  .dl-card .dl-sub{font-size:13px;color:var(--ink-soft);}
+
+  /* Footer */
+  footer{background:var(--ink);color:#C9C3B4;padding:40px 0;}
+  .footer-grid{display:flex;flex-wrap:wrap;gap:32px;}
+  .footer-grid > div{flex:1 1 260px;}
+  footer h3{color:var(--paper);font-size:17px;margin-bottom:10px;}
+  footer p{font-size:14px;margin:0 0 8px;color:#C9C3B4;}
+  footer a{color:#E4DFD2;}
+  .footer-bottom{
+    border-top:1px solid #3C4E5E;margin-top:28px;padding-top:18px;
+    font-size:13px;color:#8FA0AC;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;
+  }
+
+  @media (max-width:760px){
+    .reperes-grid{grid-template-columns:1fr 1fr;}
+    .eval-grid{grid-template-columns:1fr;}
+    .lieu-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .seance-body{padding-left:4px;}
+    .deroule-table{display:block;overflow-x:auto;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .chevron{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brandmark">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="1" y="18" width="7" height="15" fill="#D8452B"/>
+        <rect x="10.5" y="10" width="7" height="23" fill="#C4870F"/>
+        <rect x="20" y="1" width="7" height="32" fill="#F5F3EE"/>
+        <rect x="29.5" y="14" width="4" height="19" fill="#3F5F42"/>
+      </svg>
+      <span>krotest — Formation</span>
+    </div>
+    <p class="hero-eyebrow">Formation continue · École de commerce · Master 1</p>
+    <h1 class="hero-title">Activation commerciale et performance retail</h1>
+    <p class="hero-accroche">18 heures pour piloter la performance d'une force de vente en environnement retail : parcours client, rentabilité au m², rémunération variable et reporting de direction — au service du bloc de compétences BC04, Manager du Développement Commercial.</p>
+    <div class="badges">
+      <span class="badge">18h · 5 séances</span>
+      <span class="badge">Bloc RNCP BC04</span>
+      <span class="badge">50 % théorie · 50 % pratique</span>
+      <span class="badge">Groupe G1</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="programme.pdf" target="_blank" rel="noopener">Télécharger le programme (PDF)</a>
+      <a class="btn btn-ghost" href="#programme">Voir le déroulé des séances</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="reperes">
+    <div class="wrap">
+      <div class="reperes-grid">
+        <div class="repere"><div class="num">18h</div><div class="lbl">Volume horaire total</div></div>
+        <div class="repere"><div class="num">5</div><div class="lbl">Séances de 3 à 4h</div></div>
+        <div class="repere"><div class="num">50/50</div><div class="lbl">Théorie / pratique</div></div>
+        <div class="repere"><div class="num">25 ans</div><div class="lbl">D'expérience terrain mobilisée</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Un fil rouge pédagogique sur les 5 séances</h2>
+      </div>
+      <div class="filrouge-card">
+        <p>Chaque séance alterne apports théoriques structurés — exposés interactifs, retours d'expérience issus de 25 ans de pratique en entreprise, méthodes et outils — et mises en application concrètes : études de cas, exercices chiffrés sur tableur, jeux de rôle, simulations de négociation, ateliers de co-construction, pitchs devant pairs.</p>
+        <p>Une enseigne retail fictive accompagne les apprenants de la séance 1 à la séance 5. Ils y construisent progressivement un dossier complet : cartographie du parcours client, grille de rentabilité au m², plan de répartition des missions et de rémunération variable, calcul de ROI, et tableau de bord de reporting final. Ce dossier constitue la base du contrôle continu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Compétences RNCP mobilisées</h2>
+        <p>Bloc BC04 — Pilotage de la Performance Commerciale.</p>
+      </div>
+      <ul class="rncp-list">
+        <li>Participer à l'implémentation ou à l'optimisation d'un CRM avec les équipes métiers et techniques, en intégrant les contraintes RGPD et les enjeux RSE.</li>
+        <li>Concevoir, améliorer et structurer un outil de gestion et de suivi commercial lorsque les données ne sont pas supportées par un CRM.</li>
+        <li>Extraire, structurer et interpréter les données de la relation client et de la performance commerciale pour mettre en place des actions correctives.</li>
+        <li>Définir et mettre en œuvre des indicateurs de performance, y compris sur les enjeux RSE, en créant et pilotant des tableaux de bord.</li>
+        <li>Piloter la performance financière de son service et suivre l'allocation des ressources en lien avec la direction financière.</li>
+        <li>Structurer une démarche d'amélioration continue à partir des indicateurs de performance, de la veille et des retours d'expérience.</li>
+        <li>Mener un reporting régulier auprès de la direction, en intégrant les règles d'inclusivité et d'accessibilité des supports.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="programme">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Programme détaillé — 5 séances</h2>
+        <p>Dates du groupe G1. Ouvrez chaque séance pour le déroulé minuté, les livrables et les supports mobilisés.</p>
+      </div>
+
+      <div class="accordion">
+
+        <details class="seance">
+          <summary>
+            <span class="seance-num">1</span>
+            <span class="seance-head-text">
+              <span class="titre">Parcours client omnicanal et leviers d'achat impulsif</span>
+              <span class="meta">3h · Mercredi 5 novembre, 13h–16h15</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="seance-body">
+            <h4>Objectif de la séance</h4>
+            <p>Maîtriser le parcours client (physique et digital) pour identifier les zones chaudes du point de vente et activer les leviers d'achat impulsif.</p>
+            <h4>Compétences RNCP mobilisées</h4>
+            <ul>
+              <li>Analyser et interpréter des données de flux/parcours pour identifier des axes de progrès.</li>
+              <li>Structurer un outil de suivi commercial en identifiant les données essentielles au pilotage.</li>
+            </ul>
+            <h4>Lien avec la séance précédente</h4>
+            <p>Séance d'ouverture du module : présentation du fil rouge pédagogique et des modalités d'évaluation.</p>
+            <h4>Déroulé minuté</h4>
+            <table class="deroule-table">
+              <thead><tr><th>Durée</th><th>Séquence</th><th>Modalité</th></tr></thead>
+              <tbody>
+                <tr><td class="duree">15 min</td><td>Accueil, présentation du module et du fil rouge pédagogique, recueil des attentes.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">35 min</td><td>Le parcours client omnicanal : cartographie en magasin, ponts avec le digital (web-to-store, click & collect, ROPO).</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">40 min</td><td>Psychologie de l'achat impulsif en point de vente : théâtralisation, emplacements, campagnes promotionnelles.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">45 min</td><td>Atelier en sous-groupes — cartographier le parcours client d'une enseigne : flux, points de friction, zones chaudes.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+                <tr><td class="duree">45 min</td><td>Restitution croisée, débat contradictoire, synthèse des leviers d'achat impulsif activables.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+              </tbody>
+            </table>
+            <h4>Livrables</h4>
+            <ul>
+              <li>Une cartographie annotée du parcours client (flux + zones chaudes).</li>
+              <li>Une liste priorisée de 3 leviers d'achat impulsif activables.</li>
+            </ul>
+            <h4>Supports mobilisés</h4>
+            <p>Plan de magasin / photos de point de vente, template de cartographie, étude de cas sectorielle.</p>
+          </div>
+        </details>
+
+        <details class="seance">
+          <summary>
+            <span class="seance-num">2</span>
+            <span class="seance-head-text">
+              <span class="titre">Performance au m² et accords-cadres de négociation</span>
+              <span class="meta">4h · Mercredi 2 décembre, 13h–17h15</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="seance-body">
+            <h4>Objectif de la séance</h4>
+            <p>Traduire les contraintes d'espace (performance au m²) en objectifs clairs et négociables pour la force de vente.</p>
+            <h4>Compétences RNCP mobilisées</h4>
+            <ul>
+              <li>Concevoir et structurer un outil de gestion et de suivi commercial pour piloter la rentabilité de l'espace.</li>
+              <li>Définir des indicateurs de performance et les traduire en objectifs négociables sur le terrain.</li>
+            </ul>
+            <h4>Lien avec la séance précédente</h4>
+            <p>S'appuie sur la cartographie du parcours client réalisée en séance 1 : on y superpose la lecture économique de l'espace.</p>
+            <h4>Déroulé minuté</h4>
+            <table class="deroule-table">
+              <thead><tr><th>Durée</th><th>Séquence</th><th>Modalité</th></tr></thead>
+              <tbody>
+                <tr><td class="duree">45 min</td><td>Calcul de la rentabilité de l'espace : CA/m², marge au m², rendement linéaire.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">45 min</td><td>Accords-cadres nationaux et marges de négociation : impact sur l'allocation de l'espace en magasin.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">30 min</td><td>Traduire une contrainte d'espace en objectif SMART négociable pour la force de vente terrain.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">45 min</td><td>Exercice chiffré individuel puis en binôme — calculer la rentabilité au m² de plusieurs rayons.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+                <tr><td class="duree">75 min</td><td>Simulation de négociation — jeu de rôle par binômes, 3 vagues de négociation avec débrief croisé.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+              </tbody>
+            </table>
+            <h4>Livrables</h4>
+            <ul>
+              <li>Une grille de calcul de rentabilité au m² complétée et hiérarchisée par rayon.</li>
+              <li>Un argumentaire de négociation structuré (objectif SMART + marges de manœuvre).</li>
+            </ul>
+            <h4>Supports mobilisés</h4>
+            <p>Jeu de données chiffrées (CA, marge, m² par rayon), grille de négociation, grille d'observation entre pairs, tableur.</p>
+          </div>
+        </details>
+
+        <details class="seance">
+          <summary>
+            <span class="seance-num">3</span>
+            <span class="seance-head-text">
+              <span class="titre">Répartition des missions, rémunération variable et rituels de suivi</span>
+              <span class="meta">4h · Mardi 6 janvier, 13h–17h15</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="seance-body">
+            <h4>Objectif de la séance</h4>
+            <p>Impliquer l'équipe commerciale par la co-construction des objectifs de campagne et la mise en place de rituels de suivi rigoureux.</p>
+            <h4>Compétences RNCP mobilisées</h4>
+            <ul>
+              <li>Piloter la performance financière et humaine d'une campagne en pilotant l'allocation des ressources.</li>
+              <li>Définir et mettre en œuvre des indicateurs de performance et des rituels de pilotage de la performance commerciale.</li>
+            </ul>
+            <h4>Lien avec la séance précédente</h4>
+            <p>S'appuie sur les objectifs d'espace négociés en séance 2 : il s'agit de les décliner en missions d'équipe.</p>
+            <h4>Déroulé minuté</h4>
+            <table class="deroule-table">
+              <thead><tr><th>Durée</th><th>Séquence</th><th>Modalité</th></tr></thead>
+              <tbody>
+                <tr><td class="duree">30 min</td><td>Pédagogie et répartition des missions : découper les objectifs d'une campagne pour chaque membre de l'équipe.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">45 min</td><td>Co-construction de la rémunération variable : primes quantitatives et qualitatives.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">45 min</td><td>Rituels de suivi : structurer les réunions d'équipe (briefs de lancement, points d'étape hebdomadaires).</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">60 min</td><td>Atelier de co-construction — concevoir un plan de répartition des missions et une grille de rémunération variable.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+                <tr><td class="duree">60 min</td><td>Simulation d'un brief de lancement de campagne — jeu de rôle manager / équipe terrain, feedback croisé.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+              </tbody>
+            </table>
+            <h4>Livrables</h4>
+            <ul>
+              <li>Un plan de répartition des missions par membre d'équipe pour la campagne fictive.</li>
+              <li>Une grille de rémunération variable (critères quantitatifs et qualitatifs pondérés).</li>
+            </ul>
+            <h4>Supports mobilisés</h4>
+            <p>Brief de campagne fictive, trame de réunion de lancement, grille de feedback croisé, exemples de grilles de primes du secteur retail.</p>
+          </div>
+        </details>
+
+        <details class="seance">
+          <summary>
+            <span class="seance-num">4</span>
+            <span class="seance-head-text">
+              <span class="titre">Extraction des données et pilotage financier d'une campagne</span>
+              <span class="meta">3h · Jeudi 5 mars, 14h–17h15</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="seance-body">
+            <h4>Objectif de la séance</h4>
+            <p>Extraire et structurer les données financières d'une campagne pour évaluer l'atteinte des objectifs et la gestion du budget.</p>
+            <h4>Compétences RNCP mobilisées</h4>
+            <ul>
+              <li>Extraire et structurer les données afin de préparer l'analyse et en tirer des conclusions.</li>
+              <li>Piloter la performance financière du service : respect, optimisation et ajustement du budget prévisionnel.</li>
+            </ul>
+            <h4>Lien avec la séance précédente</h4>
+            <p>Réutilise la campagne fictive co-construite en séance 3 : on en évalue ici les résultats financiers.</p>
+            <h4>Déroulé minuté</h4>
+            <table class="deroule-table">
+              <thead><tr><th>Durée</th><th>Séquence</th><th>Modalité</th></tr></thead>
+              <tbody>
+                <tr><td class="duree">30 min</td><td>L'extraction des données de vente par emplacement : comparatif m² classique vs m² événementiel.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">45 min</td><td>Calcul des indicateurs financiers : ROI de campagne, suivi budgétaire, impact des écarts.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">15 min</td><td>Méthodologie d'analyse des écarts et déclenchement d'actions correctives.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">60 min</td><td>Cas pratique sur tableur — calculer le ROI, comparer m² classique et m² événementiel, identifier les écarts.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+                <tr><td class="duree">30 min</td><td>Restitution en binôme et formulation d'actions correctives argumentées.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+              </tbody>
+            </table>
+            <h4>Livrables</h4>
+            <ul>
+              <li>Un tableau de calcul de ROI et de suivi budgétaire de la campagne fictive.</li>
+              <li>Une note de recommandations correctives argumentée (3 actions maximum).</li>
+            </ul>
+            <h4>Supports mobilisés</h4>
+            <p>Jeu de données de vente par emplacement, tableur avec formules pré-configurées, trame de note de recommandations.</p>
+          </div>
+        </details>
+
+        <details class="seance">
+          <summary>
+            <span class="seance-num">5</span>
+            <span class="seance-head-text">
+              <span class="titre">Reporting de direction et amélioration continue</span>
+              <span class="meta">4h · Mardi 28 avril, 13h–17h15</span>
+            </span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="seance-body">
+            <h4>Objectif de la séance</h4>
+            <p>Présenter l'analyse d'efficacité de la campagne à la direction et poser les bases de l'amélioration continue ; cadrer l'étude de cas d'évaluation finale.</p>
+            <h4>Compétences RNCP mobilisées</h4>
+            <ul>
+              <li>Mener un reporting régulier auprès de la direction avec des outils de visualisation, en intégrant les règles d'accessibilité.</li>
+              <li>Structurer une démarche d'amélioration continue à partir des indicateurs de performance et des retours d'expérience.</li>
+            </ul>
+            <h4>Lien avec la séance précédente</h4>
+            <p>Synthétise l'ensemble des travaux des séances 1 à 4 en un reporting unique.</p>
+            <h4>Déroulé minuté</h4>
+            <table class="deroule-table">
+              <thead><tr><th>Durée</th><th>Séquence</th><th>Modalité</th></tr></thead>
+              <tbody>
+                <tr><td class="duree">45 min</td><td>Principes du reporting de direction appliqué au retail, règles d'inclusivité et d'accessibilité des supports.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">30 min</td><td>Structurer un retour d'expérience (REX) de la force de vente pour ajuster la prochaine activation.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">30 min</td><td>La démarche d'amélioration continue : boucle indicateurs → analyse → actions → nouveaux indicateurs.</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">15 min</td><td>Cadrage de l'étude de cas transversale (modalités d'examen du bloc BC04).</td><td><span class="tag-modalite tag-theorie">Théorie</span></td></tr>
+                <tr><td class="duree">60 min</td><td>Atelier de synthèse — construire un tableau de bord/reporting visuel destiné à un CODIR fictif.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+                <tr><td class="duree">60 min</td><td>Pitchs de reporting devant le groupe, feedback croisé entre pairs.</td><td><span class="tag-modalite tag-pratique">Pratique</span></td></tr>
+              </tbody>
+            </table>
+            <h4>Livrables</h4>
+            <ul>
+              <li>Un tableau de bord de reporting synthétique, accessible et argumenté, prêt à être présenté à un CODIR.</li>
+              <li>Une fiche REX avec 2 axes d'amélioration continue pour la prochaine campagne.</li>
+            </ul>
+            <h4>Supports mobilisés</h4>
+            <p>Modèles de tableaux de bord, charte d'accessibilité des documents, grille d'évaluation des pitchs entre pairs.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Évaluation du module</h2>
+      </div>
+      <div class="eval-grid">
+        <div class="eval-card">
+          <h3>Contrôle continu</h3>
+          <p>Évaluation des livrables produits en séances 1 à 5 sur l'enseigne fil rouge : cartographie, grilles de rentabilité, plan de répartition/rémunération, ROI, tableau de bord.</p>
+        </div>
+        <div class="eval-card">
+          <h3>Examen</h3>
+          <p>Étude de cas transversale sur le bloc BC04, mobilisant l'ensemble des apprentissages : parcours client, rentabilité m², pilotage d'équipe, ROI, reporting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Lieu et accès</h2>
+      </div>
+      <div class="lieu-grid">
+        <div class="lieu-info">
+          <div class="addr-title">Adresse</div>
+          <address>
+            5 avenue Foch<br>
+            75116 Paris<br>
+            France
+          </address>
+        </div>
+        <div class="map-frame">
+          <iframe
+            title="Carte — 5 avenue Foch, Paris"
+            src="https://maps.google.com/maps?q=5%20avenue%20Foch%2C%2075116%20Paris%2C%20France&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Téléchargements</h2>
+      </div>
+      <div class="dl-list">
+        <a class="dl-card" href="programme.pdf" target="_blank" rel="noopener">
+          <span class="dl-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <span class="dl-title" style="display:block;">Programme détaillé</span>
+            <span class="dl-sub">programme.pdf</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Contact</h3>
+        <p>test magique — Formatrice, krotest</p>
+        <p>Contact via l'organisme de formation.</p>
+      </div>
+      <div>
+        <h3>Accessibilité et inclusion</h3>
+        <p><a href="#politique-inclusion">Politique d'inclusion et de gestion du handicap de l'organisme</a></p>
+        <p>Formation accessible aux personnes en situation de handicap. Toute adaptation peut être demandée avant le démarrage de la session.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>krotest — Activation commerciale et performance retail</span>
+      <span>Année académique 2026–2027</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
